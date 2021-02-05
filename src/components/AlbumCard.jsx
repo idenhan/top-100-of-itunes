@@ -1,17 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { toTitleCase, truncateWithEllipses } from "../helper";
 
 const AlbumCard = ({ album, callback, index }) => {
-  const toTitleCase = str => {
-    return str.replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-  };
-
-  const truncateWithEllipses = (text, max) => {
-    return text.substr(0, max - 1) + (text.length > max ? "..." : "");
-  };
-
   const albumId = album.id.attributes["im:id"];
   const albumName = truncateWithEllipses(
     toTitleCase(album["im:name"].label),
