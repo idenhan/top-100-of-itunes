@@ -1,0 +1,45 @@
+.single-album
+  border-radius: 2px
+
+  &__thumbnail-wrapper
+    position: relative
+    width: 100%
+    max-width: 250px
+
+    @media (min-width: 768px)
+      max-width: 100%
+
+  &__thumbnail
+    width: 100%
+    background-color: $off-white
+    background: $off-white center / cover no-repeat
+
+    @media (min-width: 768px)
+      margin-right: 30px
+
+  &__content
+
+    &-title
+      font-size: 2em
+      max-width: 300px
+      line-height: 1em
+      margin-bottom: 10px
+
+    &-artist
+      font-size: 1.2em
+      font-weight: 400
+      color: $main-color
+      margin-bottom: 2px
+
+    &-text
+      color: $gray
+      font-size: 0.9em
+
+    &-number
+      font-size: 2em
+      color: rgba(#000, 0.2)
+      font-weight: bold
+
+      &:before
+        content: "#"
+        font-size: 0.8em
