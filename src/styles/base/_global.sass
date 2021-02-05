@@ -14,5 +14,106 @@ body
   overflow-x: hidden
   background: #ececec
 
-input, button
+input, button, textarea
   font: inherit
+
+a
+  text-decoration: none
+
+img
+  max-width: 100%
+
+.link
+  position: relative
+  display: inline-block
+  height: 100%
+  cursor: pointer
+  text-decoration: none
+  color: inherit
+
+  &:before
+    content: ""
+    position: absolute
+    height: 1px
+    left: 0
+    background: $dark-gray
+    bottom: 0
+    width: 0
+    transition: width $transition-timing
+
+  &--white
+
+    &:before
+      background: $white
+
+  &--purple
+
+    &:before
+      background: $main-color
+
+  &:hover
+    &:before
+      width: 100%
+
+.section-headline
+  padding-bottom: 10px
+  padding-top: 25px
+
+  @media (min-width: 768px)
+    padding-top: 35px
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+  @media (min-width: 1200px)
+    padding-bottom: 15px
+
+  h2
+    font-size: 1em
+
+    @media (min-width: 768px)
+      font-size: 1.2em
+
+    @media (min-width: 1200px)
+      font-size: 1.6em
+
+.container
+  margin: auto
+
+.wrapper
+  padding-top: 25px
+  padding-bottom: 25px
+
+  @media (min-width: 768px)
+    padding-top: 35px
+    padding-bottom: 35px
+
+.button
+  margin: 20px auto 20px
+  background-color: $main-color
+  border: 1px solid $main-color
+  border-radius: 2px
+  color: #ffffff
+  cursor: pointer
+  justify-content: center
+  padding: calc(0.5em - 1px) 1em
+  text-align: center
+  white-space: nowrap
+  display: inline-flex
+  box-shadow: none
+  align-items: center
+  font-size: 1rem
+  font-weight: bold
+  height: 2.5em
+  line-height: 1.5
+  position: relative
+  transition: background-color $transition-timing
+
+  &:hover
+    background-color: darken($main-color, 10%)
+
+.search-input
+  border-radius: 50px
+  border: 0
+  height: 35px
+  padding: 0 15px

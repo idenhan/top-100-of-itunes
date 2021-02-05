@@ -16,6 +16,7 @@ const SingleAlbum = props => {
       <div className="container wrapper">
         <div className="single-album">
           <div className="row">
+            <div className="col-2" />
             <div className="col-sm-6 col-lg-5 col-xl-4">
               <div className="single-album__thumbnail-wrapper">
                 <img
@@ -25,7 +26,7 @@ const SingleAlbum = props => {
                 />
               </div>
             </div>
-            <div className="col-sm-6 col-lg-7 col-xl-8">
+            <div className="col-sm-6 col-lg-5 col-xl-4">
               <div className="single-album__content">
                 <p className="single-album__content-number">{topNumber}</p>
                 <h2 className="single-album__content-title">{albumName}</h2>
@@ -41,6 +42,7 @@ const SingleAlbum = props => {
                 </Link>
               </div>
             </div>
+            <div className="col-2" />
           </div>
         </div>
       </div>

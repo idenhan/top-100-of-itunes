@@ -5,7 +5,7 @@ const Footer = () => {
     <section className="footer">
       <div className="footer__content container">
         <p>
-          Developed by
+          Developed by{" "}
           <a
             href="https://www.idenhan.com"
             rel="noreferrer"
@@ -16,7 +16,7 @@ const Footer = () => {
           </a>
         </p>
         <p>
-          Built with
+          Built with{" "}
           <a href="https://reactjs.org/" className="link">
             React JS
           </a>

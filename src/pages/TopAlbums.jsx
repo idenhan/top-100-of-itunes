@@ -6,6 +6,7 @@ import AlbumsGrid from "../components/AlbumsGrid";
 import AlbumCard from "../components/AlbumCard";
 import LoadMoreBtn from "../components/elements/LoadMoreBtn";
 import Spinner from "../components/elements/Spinner/Spinner";
+import Footer from "../components/Footer";
 
 const TopAlbums = () => {
   const visibleQuantity = 20;
@@ -42,6 +43,7 @@ const TopAlbums = () => {
       {visible < showAlbums.length && !loading && (
         <LoadMoreBtn text={`Load more albums`} callback={loadMoreAlbums} />
       )}
+      <Footer />
     </>
   );
 };
