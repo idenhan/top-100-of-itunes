@@ -4,10 +4,11 @@ import { useFetchingAlbums } from "../hooks/useFetchingAlbums";
 
 import AlbumsGrid from "../components/AlbumsGrid";
 import AlbumCard from "../components/AlbumCard";
+import LoadMoreBtn from "../components/elements/LoadMoreBtn";
 
 const TopAlbums = () => {
   const visibleQuantity = 20;
-  const [{ state, laoding, error }, fetchAlbums] = useFetchingAlbums();
+  const [{ state, loading, error }, fetchAlbums] = useFetchingAlbums();
   const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(visibleQuantity);
 
@@ -34,6 +35,9 @@ const TopAlbums = () => {
           />
         ))}
       </AlbumsGrid>
+      {visible < showAlbums.length && !loading && (
+        <LoadMoreBtn text={`Load more albums`} callback={loadMoreAlbums} />
+      )}
     </>
   );
 };
