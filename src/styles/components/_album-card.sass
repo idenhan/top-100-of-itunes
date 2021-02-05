@@ -1,0 +1,185 @@
+
+.album-card
+  background: #fff
+  padding: 10px
+  text-align: center
+  border-radius: 5px
+  margin: 10px
+  max-width: 140px
+  position: relative
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1)
+  transition: $transition-timing
+  overflow: hidden
+
+  @media (min-width: 375px)
+    max-width: 165px
+    flex: 1 0 calc(100% / 2 - 20px)
+
+  @media (min-width: 768px)
+    padding: 20px
+    max-width: 208px
+    flex: 1 0 calc(100% / 3 - 20px)
+
+  @media (min-width: 992px)
+    flex: 1 0 calc(100% / 4 - 20px)
+
+  @media (min-width: 1200px)
+    flex: 1 0 calc(100% / 5 - 20px)
+
+  &:hover
+
+    @media (min-width: 992px)
+      // transform: scale(1.05)
+
+      .album-card
+
+        &__overlay
+          opacity: 0.9
+          transform: scale(12)
+
+          &-rect
+            left: -14px
+
+          &-shadow
+            left: 26px
+
+          &-number
+            font-size: 1.6em
+            right: 30px
+            top: 20px
+
+  &__mobile-link
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 9
+    cursor: pointer
+
+    @media (min-width: 992px)
+      display: none
+
+  &__number
+    display: block
+    font-size: 0.7em
+    display: inline-block
+    padding: 5px
+    border-radius: 5px
+    border: 1px solid rgba(0, 0, 0, 0.1)
+    background: $dark-gray
+    color: #fff
+    margin-bottom: 5px
+    position: absolute
+    top: 8px
+    left: -12px
+
+    @media (min-width: 768px)
+      display: none
+
+  &__thumbnail
+    width: 166px
+    height: 166px
+    max-width: 115px
+    max-height: 115px
+    background: $off-white center / cover no-repeat
+    margin-bottom: 10px
+    position: relative
+
+    @media (min-width: 375px)
+      max-width: 145px
+      max-height: 145px
+
+    @media (min-width: 768px)
+      max-width: 166px
+      max-height: 166px
+
+  &__title
+    text-align: left
+    margin: auto
+    font-size: 14px
+    margin-bottom: 5px
+    font-weight: bold
+    letter-spacing: -.016em
+    text-overflow: ellipsis
+    overflow: hidden
+    color: $main-color
+
+  &__artist
+    @extend .album-card__title
+    color: #6e6e6e
+    font-size: 12px
+    font-weight: 400
+
+  &__overlay
+    transition: all $transition-timing ease-out
+    background: $off-white
+    opacity: 1
+    color: $dark-gray
+    width: 64px
+    height: 64px
+    position: absolute
+    right: -22px
+    top: -17px
+    border-radius: 32px
+    border: 3px solid #fff
+    transform: scale(1)
+    transform-origin: 50% 50%
+
+    &-rect
+      cursor: pointer
+      background: darken($dark-gray, 15%)
+      width: 162px
+      height: 50px
+      transform: skewX(-20deg)
+      display: flex
+      position: absolute
+      top: 134px
+      left: -220px
+      z-index: 9
+      transition: all $transition-timing ease-out .1s
+      align-items: center
+
+      &:hover
+        p
+          color: rgba(#fff, 1)
+
+      p
+        font-size: 0.8em
+        font-weight: bold
+        text-align: left
+        padding-left: 35px
+        color: rgba(#fff, 0.8)
+        transform: skewX(20deg)
+        position: relative
+        right: 0
+        text-align: right
+        transition: color $transition-timing
+
+      img
+        width: 10px
+        background-color: white
+
+    &-shadow
+      @extend .album-card__overlay-rect
+      cursor: default
+      background: $main-color
+      z-index: 8
+      transition: all $transition-timing ease-out
+      opacity: .9
+      top: 140px
+
+    &-number
+      position: absolute
+      top: 10px
+      right: 10px
+      font-size: 0.85em
+      color: #000
+      text-align: left
+      font-weight: bold
+      transition: all $transition-timing
+
+      &:before
+        content: "#"
+        font-size: 0.8em
+        opacity: 0.2

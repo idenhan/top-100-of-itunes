@@ -1,12 +1,15 @@
 import React from "react";
-import TopAlbums from "./pages/TopAlbums";
+import Routes from "./routes";
+import { BrowserRouter } from "react-router-dom";
 
 import "./styles/main.sass";
 
 function App() {
   return (
     <>
-      <TopAlbums />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </>
   );
 }
