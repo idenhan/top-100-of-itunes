@@ -5,6 +5,7 @@ import { useFetchingAlbums } from "../hooks/useFetchingAlbums";
 import AlbumsGrid from "../components/AlbumsGrid";
 import AlbumCard from "../components/AlbumCard";
 import LoadMoreBtn from "../components/elements/LoadMoreBtn";
+import Spinner from "../components/elements/Spinner/Spinner";
 
 const TopAlbums = () => {
   const visibleQuantity = 20;
@@ -24,6 +25,8 @@ const TopAlbums = () => {
     setVisible(prev => prev + visibleQuantity);
   };
 
+  if (error) return <div>Something went wrong!</div>;
+
   return (
     <>
       <AlbumsGrid header="Top 100 Albums" callback={word => setSearch(word)}>
@@ -35,6 +38,7 @@ const TopAlbums = () => {
           />
         ))}
       </AlbumsGrid>
+      {loading && <Spinner />}
       {visible < showAlbums.length && !loading && (
         <LoadMoreBtn text={`Load more albums`} callback={loadMoreAlbums} />
       )}
