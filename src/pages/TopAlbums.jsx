@@ -32,6 +32,8 @@ const TopAlbums = () => {
     setIsReversed(!isReversed);
   };
 
+  const nameBtn = () => {};
+  console.log(state);
   if (error) return <div>Something went wrong!</div>;
 
   return (
