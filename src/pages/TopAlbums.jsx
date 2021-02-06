@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useFetchingAlbums } from "../hooks/useFetchingAlbums";
 
@@ -13,6 +13,7 @@ const TopAlbums = () => {
   const [{ state, loading, error }, fetchAlbums] = useFetchingAlbums();
   const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(visibleQuantity);
+  const [isReversed, setIsReversed] = useState(false);
 
   const showAlbums = state.albums.filter(album => {
     return (
@@ -30,14 +31,37 @@ const TopAlbums = () => {
 
   return (
     <>
+      <button
+        className="text-center mt-2"
+        onClick={() => setIsReversed(!isReversed)}
+      >
+        Reverse
+      </button>
       <AlbumsGrid header="Top 100 Albums" callback={word => setSearch(word)}>
-        {showAlbums.slice(0, visible).map(album => (
-          <AlbumCard
-            key={album.id.attributes["im:id"]}
-            album={album}
-            index={state.albums.indexOf(album)}
-          />
-        ))}
+        {!isReversed ? (
+          <>
+            {showAlbums.slice(0, visible).map(album => (
+              <AlbumCard
+                key={album.id.attributes["im:id"]}
+                album={album}
+                index={state.albums.indexOf(album)}
+              />
+            ))}
+          </>
+        ) : (
+          <>
+            {showAlbums
+              .reverse()
+              .slice(0, visible)
+              .map(album => (
+                <AlbumCard
+                  key={album.id.attributes["im:id"]}
+                  album={album}
+                  index={state.albums.indexOf(album)}
+                />
+              ))}
+          </>
+        )}
       </AlbumsGrid>
       {loading && <Spinner />}
       {visible < showAlbums.length && !loading && (
