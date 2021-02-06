@@ -7,6 +7,7 @@ import AlbumCard from "../components/AlbumCard";
 import LoadMoreBtn from "../components/elements/LoadMoreBtn";
 import Spinner from "../components/elements/Spinner/Spinner";
 import Footer from "../components/Footer";
+import SortBtn from "../components/elements/SortBtn";
 
 const TopAlbums = () => {
   const visibleQuantity = 20;
@@ -27,16 +28,23 @@ const TopAlbums = () => {
     setVisible(prev => prev + visibleQuantity);
   };
 
+  const reverseBtn = () => {
+    setIsReversed(!isReversed);
+  };
+
   if (error) return <div>Something went wrong!</div>;
 
   return (
     <>
-      <button
-        className="text-center mt-2"
-        onClick={() => setIsReversed(!isReversed)}
-      >
-        Reverse
-      </button>
+      <section className="top-albums container">
+        <div className="top-albums-right section-headline">
+          <div className="top-albums-right-btn">
+            <SortBtn text={`Reverse`} callback={reverseBtn} />
+            <SortBtn text={`By Name`} callback={reverseBtn} />
+            <SortBtn text={`By Date`} callback={reverseBtn} />
+          </div>
+        </div>
+      </section>
       <AlbumsGrid header="Top 100 Albums" callback={word => setSearch(word)}>
         {!isReversed ? (
           <>
