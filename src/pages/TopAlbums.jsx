@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { useFetchingAlbums } from "../hooks/useFetchingAlbums";
 
@@ -11,7 +11,7 @@ import SortBtn from "../components/elements/SortBtn";
 
 const TopAlbums = () => {
   const visibleQuantity = 20;
-  const [{ state, loading, error }, fetchAlbums] = useFetchingAlbums();
+  const [{ state, loading, error }] = useFetchingAlbums();
   const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(visibleQuantity);
   const [isReversed, setIsReversed] = useState(false);
@@ -32,7 +32,8 @@ const TopAlbums = () => {
     setIsReversed(!isReversed);
   };
 
-  const nameBtn = () => {};
+  // const nameBtn = () => {};
+
   console.log(state);
   if (error) return <div>Something went wrong!</div>;
 
