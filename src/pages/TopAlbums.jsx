@@ -15,6 +15,8 @@ const TopAlbums = () => {
   const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(visibleQuantity);
   const [isReversed, setIsReversed] = useState(false);
+  const [isByName, setIsByName] = useState(false);
+  const [data, setData] = useState([]);
 
   const showAlbums = state.albums.filter(album => {
     return (
@@ -32,7 +34,64 @@ const TopAlbums = () => {
     setIsReversed(!isReversed);
   };
 
-  // const nameBtn = () => {};
+  const nameBtn = () => {
+    setIsByName(!isByName);
+    let temp = [];
+    temp.push(state.albums);
+    console.log("temp", temp);
+    temp[0].sort((a, b) => (a["im:name"].label > b["im:name"].label ? 1 : -1));
+    console.log("after temp", temp);
+
+    return (
+      <>
+        {showAlbums.slice(0, visible).map(album => (
+          <AlbumCard
+            key={album.id.attributes["im:id"]}
+            album={album}
+            index={temp.indexOf(album)}
+          />
+        ))}
+      </>
+    );
+  };
+
+  // const dateBtn = () => {}
+
+  const showData = () => {
+    if (!isReversed && !isByName) {
+      return (
+        <>
+          {showAlbums.slice(0, visible).map(album => (
+            <AlbumCard
+              key={album.id.attributes["im:id"]}
+              album={album}
+              index={state.albums.indexOf(album)}
+            />
+          ))}
+        </>
+      );
+    } else if (isByName) {
+      // eslint-disable-next-line no-lone-blocks
+      {
+        nameBtn();
+      }
+    } else {
+      return (
+        <>
+          {showAlbums
+            .reverse()
+            .slice(0, visible)
+            .map(album => (
+              <AlbumCard
+                key={album.id.attributes["im:id"]}
+                album={album}
+                index={state.albums.indexOf(album)}
+              />
+            ))}
+        </>
+      );
+    }
+  };
 
   console.log(state);
   if (error) return <div>Something went wrong!</div>;
@@ -43,36 +102,13 @@ const TopAlbums = () => {
         <div className="top-albums-right section-headline">
           <div className="top-albums-right-btn">
             <SortBtn text={`Reverse`} callback={reverseBtn} />
-            <SortBtn text={`By Name`} callback={reverseBtn} />
-            <SortBtn text={`By Date`} callback={reverseBtn} />
+            {/* <SortBtn text={`By Name`} callback={nameBtn} />
+            <SortBtn text={`By Date`} callback={reverseBtn} /> */}
           </div>
         </div>
       </section>
       <AlbumsGrid header="Top 100 Albums" callback={word => setSearch(word)}>
-        {!isReversed ? (
-          <>
-            {showAlbums.slice(0, visible).map(album => (
-              <AlbumCard
-                key={album.id.attributes["im:id"]}
-                album={album}
-                index={state.albums.indexOf(album)}
-              />
-            ))}
-          </>
-        ) : (
-          <>
-            {showAlbums
-              .reverse()
-              .slice(0, visible)
-              .map(album => (
-                <AlbumCard
-                  key={album.id.attributes["im:id"]}
-                  album={album}
-                  index={state.albums.indexOf(album)}
-                />
-              ))}
-          </>
-        )}
+        {showData()}
       </AlbumsGrid>
       {loading && <Spinner />}
       {visible < showAlbums.length && !loading && (

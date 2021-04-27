@@ -35,7 +35,7 @@ const SingleAlbum = props => {
                   {albumCategory} · {albumDate}
                 </p>
                 <p className="single-album__content-text">{albumCount} Songs</p>
-                <Link to="/">
+                <Link to="/top-100-of-itunes">
                   <button type="button" className="button button-dark">
                     &#8592; See all albums
                   </button>

@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="header">
       <div className="container d-flex justify-content-between align-items-center">
-        <Link to="/">
+        <Link to="/top-100-of-itunes">
           <span className="logo">
             <img src={logo} alt="Logo" />
             <h1>THOI</h1>

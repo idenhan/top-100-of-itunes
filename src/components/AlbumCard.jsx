@@ -16,7 +16,7 @@ const AlbumCard = ({ album, callback, index }) => {
     <li className="album-card">
       <Link
         to={{
-          pathname: `/album/${albumId}`,
+          pathname: `/top-100-of-itunes/album/${albumId}`,
           state: {
             album,
             topNumber,
@@ -35,7 +35,7 @@ const AlbumCard = ({ album, callback, index }) => {
       <p className="album-card__overlay-number">{topNumber}</p>
       <Link
         to={{
-          pathname: `/album/${albumId}`,
+          pathname: `/top-100-of-itunes/album/${albumId}`,
           state: {
             album,
             topNumber,
