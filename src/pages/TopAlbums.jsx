@@ -16,7 +16,7 @@ const TopAlbums = () => {
   const [visible, setVisible] = useState(visibleQuantity);
   const [isReversed, setIsReversed] = useState(false);
   const [isByName, setIsByName] = useState(false);
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   const showAlbums = state.albums.filter(album => {
     return (
@@ -102,8 +102,6 @@ const TopAlbums = () => {
         <div className="top-albums-right section-headline">
           <div className="top-albums-right-btn">
             <SortBtn text={`Reverse`} callback={reverseBtn} />
-            {/* <SortBtn text={`By Name`} callback={nameBtn} />
-            <SortBtn text={`By Date`} callback={reverseBtn} /> */}
           </div>
         </div>
       </section>

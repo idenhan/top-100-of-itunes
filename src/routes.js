@@ -3,7 +3,6 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 import TopAlbums from "./pages/TopAlbums";
 import SingleAlbum from "./pages/SingleAlbum";
-import Header from "./components/Header";
 
 const Routes = () => (
   <Switch>
